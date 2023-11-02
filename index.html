@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bar Chart Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/michalsnik/aos/2.3.4/dist/aos.css">
+</head>
+<body>
+    <div class="container text-center">
+        <button id="showGraphButton" class="btn btn-primary mt-4" data-aos="fade-up">Show Bar Graph</button>
+        <div id="graphContainer" class="mt-4" style="display: none;" data-aos="fade-up">
+            <canvas id="myBarChart" class="my-4"></canvas>
+            <button id="toggleButton" class="btn btn-secondary mr-2">Toggle View</button>
+            <button id="dayButton" class="btn btn-secondary">View by Day</button>
+            <button id="weekButton" class="btn btn-secondary mr-2">View by Week</button>
+            <button id="monthButton" class="btn btn-secondary">View by Month</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.rawgit.com/michalsnik/aos/2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>

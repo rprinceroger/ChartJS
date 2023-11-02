@@ -1,0 +1,19 @@
+.container {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+/* Add your custom styles here */
+
+.my-4 {
+    margin-top: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+}
+
