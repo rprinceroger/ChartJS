@@ -2,7 +2,7 @@
 
 > It's a static website with a responsive design. I build it, using `HTML, CSS, Bootstrap, ChartJS, AOS Animation` and a few line of codes for `JavaScript` to make it interactive.
 
-Click [here](chart-js-rho.vercel.app) to test ChartJS.
+Click [here](https://chart-js-rho.vercel.app/) to test ChartJS.
 
 <hr>
 

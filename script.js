@@ -1,40 +1,53 @@
 document.addEventListener("DOMContentLoaded", function() {
-    var graphVisible = false; // Variable to track the graph visibility
-    var stacked = false; // Variable to track the current view mode
-    var chart; // Variable to store the chart instance
+    // Variables
+    var graphVisible = false; // To track the graph visibility
+    var stacked = false; // To track the current view mode
+    var chart; // To store the chart instance
+    var ctx = document.getElementById('myBarChart').getContext('2d'); // Get the canvas element
 
-    // Get the canvas element
-    var ctx = document.getElementById('myBarChart').getContext('2d');
+    // Get the current date as a reference
+    var currentDate = new Date();
+
+    // Generate labels for the chart based on the current date moving backward
+    var labels = [];
+    for (var i = 4; i >= 0; i--) {
+        var date = new Date(currentDate);
+        date.setDate(currentDate.getDate() - i);
+        labels.push(date.toDateString());
+    }
+
+    // Generate random data for the chart
+    var datasets = [
+        {
+            label: 'Campaign 1',
+            data: generateRandomData(5),
+            backgroundColor: 'rgba(75, 192, 192, 0.6',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1,
+            hidden: false, // Initially visible
+        },
+        {
+            label: 'Campaign 2',
+            data: generateRandomData(5),
+            backgroundColor: 'rgba(255, 99, 132, 0.6',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 1,
+            hidden: false, // Initially visible
+        },
+        {
+            label: 'Campaign 3',
+            data: generateRandomData(5),
+            backgroundColor: 'rgba(54, 162, 235, 0.6',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1,
+            hidden: false, // Initially visible
+        }
+    ];
 
     // Define the data for the chart
     var data = {
-        labels: ['Label 1', 'Label 2', 'Label 3', 'Label 4', 'Label 5'],
-        datasets: [
-            {
-                label: 'Campaign 1',
-                data: [10, 20, 15, 30, 25],
-                backgroundColor: 'rgba(75, 192, 192, 0.6',
-                borderColor: 'rgba(75, 192, 192, 1)',
-                borderWidth: 1,
-                hidden: false, // Initially visible
-            },
-            {
-                label: 'Campaign 2',
-                data: [15, 10, 25, 20, 30],
-                backgroundColor: 'rgba(255, 99, 132, 0.6',
-                borderColor: 'rgba(255, 99, 132, 1)',
-                borderWidth: 1,
-                hidden: false, // Initially visible
-            },
-            {
-                label: 'Campaign 3',
-                data: [5, 15, 10, 15, 20],
-                backgroundColor: 'rgba(54, 162, 235, 0.6',
-                borderColor: 'rgba(54, 162, 235, 1)',
-                borderWidth: 1,
-                hidden: false, // Initially visible
-            }
-        ]
+        labels: labels,
+        datasets: datasets
     };
 
     // Define chart options
@@ -49,6 +62,15 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
     };
+
+    // Function to generate random data
+    function generateRandomData(count) {
+        var data = [];
+        for (var i = 0; i < count; i++) {
+            data.push(Math.floor(Math.random() * 100) + 20); // Simulated data
+        }
+        return data;
+    }
 
     // Function to toggle the visibility of the graph
     function toggleGraphVisibility() {
@@ -92,36 +114,33 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById('dayButton').addEventListener('click', function () {
         // You can implement your logic for viewing data by day here
         // For this example, we update the chart data with new data for days
-        data.labels = ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5'];
-        data.datasets.forEach(function (dataset) {
-            dataset.data = dataset.data.map(function () {
-                return Math.floor(Math.random() * 10) + 1; // Simulated data
-            });
+        labels = [];
+        datasets.forEach(function (dataset) {
+            dataset.data = generateRandomData(5);
         });
+        chart.data.labels = labels;
         chart.update(); // Update the existing chart with new data
     });
     
     document.getElementById('weekButton').addEventListener('click', function () {
         // You can implement your logic for viewing data by week here
         // For this example, we update the chart data with new data for weeks
-        data.labels = ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5'];
-        data.datasets.forEach(function (dataset) {
-            dataset.data = dataset.data.map(function () {
-                return Math.floor(Math.random() * 50) + 10; // Simulated data
-            });
+        labels = [];
+        datasets.forEach(function (dataset) {
+            dataset.data = generateRandomData(5);
         });
+        chart.data.labels = labels;
         chart.update(); // Update the existing chart with new data
     });
 
     document.getElementById('monthButton').addEventListener('click', function () {
         // You can implement your logic for viewing data by month here
         // For this example, we update the chart data with new data for months
-        data.labels = ['Month 1', 'Month 2', 'Month 3', 'Month 4', 'Month 5'];
-        data.datasets.forEach(function (dataset) {
-            dataset.data = dataset.data.map(function () {
-                return Math.floor(Math.random() * 100) + 20; // Simulated data
-            });
+        labels = [];
+        datasets.forEach(function (dataset) {
+            dataset.data = generateRandomData(5);
         });
+        chart.data.labels = labels;
         chart.update(); // Update the existing chart with new data
     });
 });
